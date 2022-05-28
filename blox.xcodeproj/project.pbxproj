@@ -8,7 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		C9855BBC28424AB3009F345A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BBB28424AB3009F345A /* main.swift */; };
+		C9855BCF28424AD1009F345A /* LoxCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9855BC728424AD1009F345A /* LoxCore.framework */; };
+		C9855BD428424AD1009F345A /* LoxCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BD328424AD1009F345A /* LoxCoreTests.swift */; };
+		C9855BD528424AD1009F345A /* LoxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C9855BC928424AD1009F345A /* LoxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9855BDD28424AD9009F345A /* LoxCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9855BC728424AD1009F345A /* LoxCore.framework */; };
+		C9855BDE28424AD9009F345A /* LoxCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9855BC728424AD1009F345A /* LoxCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C9855BE528424AFC009F345A /* OpCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BE228424AFC009F345A /* OpCode.swift */; };
+		C9855BE628424AFC009F345A /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BE328424AFC009F345A /* Value.swift */; };
+		C9855BE728424AFC009F345A /* Chunck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BE428424AFC009F345A /* Chunck.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9855BD028424AD1009F345A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9855BB028424AB3009F345A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9855BC628424AD1009F345A;
+			remoteInfo = LoxCore;
+		};
+		C9855BDF28424AD9009F345A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9855BB028424AB3009F345A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9855BC628424AD1009F345A;
+			remoteInfo = LoxCore;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C9855BB628424AB3009F345A /* CopyFiles */ = {
@@ -20,11 +45,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		C9855BE128424AD9009F345A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C9855BDE28424AD9009F345A /* LoxCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C9855BB828424AB3009F345A /* blox */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = blox; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9855BBB28424AB3009F345A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C9855BC728424AD1009F345A /* LoxCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoxCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9855BC928424AD1009F345A /* LoxCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoxCore.h; sourceTree = "<group>"; };
+		C9855BCE28424AD1009F345A /* LoxCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoxCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9855BD328424AD1009F345A /* LoxCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoxCoreTests.swift; sourceTree = "<group>"; };
+		C9855BE228424AFC009F345A /* OpCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpCode.swift; sourceTree = "<group>"; };
+		C9855BE328424AFC009F345A /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		C9855BE428424AFC009F345A /* Chunck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chunck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +75,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9855BDD28424AD9009F345A /* LoxCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9855BC428424AD1009F345A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9855BCB28424AD1009F345A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9855BCF28424AD1009F345A /* LoxCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,7 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				C9855BBA28424AB3009F345A /* blox */,
+				C9855BC828424AD1009F345A /* LoxCore */,
+				C9855BD228424AD1009F345A /* LoxCoreTests */,
 				C9855BB928424AB3009F345A /* Products */,
+				C9855BDC28424AD9009F345A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -50,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				C9855BB828424AB3009F345A /* blox */,
+				C9855BC728424AD1009F345A /* LoxCore.framework */,
+				C9855BCE28424AD1009F345A /* LoxCoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,7 +126,44 @@
 			path = blox;
 			sourceTree = "<group>";
 		};
+		C9855BC828424AD1009F345A /* LoxCore */ = {
+			isa = PBXGroup;
+			children = (
+				C9855BE428424AFC009F345A /* Chunck.swift */,
+				C9855BE228424AFC009F345A /* OpCode.swift */,
+				C9855BE328424AFC009F345A /* Value.swift */,
+				C9855BC928424AD1009F345A /* LoxCore.h */,
+			);
+			path = LoxCore;
+			sourceTree = "<group>";
+		};
+		C9855BD228424AD1009F345A /* LoxCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				C9855BD328424AD1009F345A /* LoxCoreTests.swift */,
+			);
+			path = LoxCoreTests;
+			sourceTree = "<group>";
+		};
+		C9855BDC28424AD9009F345A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C9855BC228424AD1009F345A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9855BD528424AD1009F345A /* LoxCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		C9855BB728424AB3009F345A /* blox */ = {
@@ -72,15 +173,53 @@
 				C9855BB428424AB3009F345A /* Sources */,
 				C9855BB528424AB3009F345A /* Frameworks */,
 				C9855BB628424AB3009F345A /* CopyFiles */,
+				C9855BE128424AD9009F345A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C9855BE028424AD9009F345A /* PBXTargetDependency */,
 			);
 			name = blox;
 			productName = blox;
 			productReference = C9855BB828424AB3009F345A /* blox */;
 			productType = "com.apple.product-type.tool";
+		};
+		C9855BC628424AD1009F345A /* LoxCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9855BD628424AD1009F345A /* Build configuration list for PBXNativeTarget "LoxCore" */;
+			buildPhases = (
+				C9855BC228424AD1009F345A /* Headers */,
+				C9855BC328424AD1009F345A /* Sources */,
+				C9855BC428424AD1009F345A /* Frameworks */,
+				C9855BC528424AD1009F345A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoxCore;
+			productName = LoxCore;
+			productReference = C9855BC728424AD1009F345A /* LoxCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C9855BCD28424AD1009F345A /* LoxCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9855BD928424AD1009F345A /* Build configuration list for PBXNativeTarget "LoxCoreTests" */;
+			buildPhases = (
+				C9855BCA28424AD1009F345A /* Sources */,
+				C9855BCB28424AD1009F345A /* Frameworks */,
+				C9855BCC28424AD1009F345A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9855BD128424AD1009F345A /* PBXTargetDependency */,
+			);
+			name = LoxCoreTests;
+			productName = LoxCoreTests;
+			productReference = C9855BCE28424AD1009F345A /* LoxCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -93,6 +232,13 @@
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					C9855BB728424AB3009F345A = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					C9855BC628424AD1009F345A = {
+						CreatedOnToolsVersion = 13.4;
+						LastSwiftMigration = 1340;
+					};
+					C9855BCD28424AD1009F345A = {
 						CreatedOnToolsVersion = 13.4;
 					};
 				};
@@ -111,9 +257,28 @@
 			projectRoot = "";
 			targets = (
 				C9855BB728424AB3009F345A /* blox */,
+				C9855BC628424AD1009F345A /* LoxCore */,
+				C9855BCD28424AD1009F345A /* LoxCoreTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9855BC528424AD1009F345A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9855BCC28424AD1009F345A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C9855BB428424AB3009F345A /* Sources */ = {
@@ -124,7 +289,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C9855BC328424AD1009F345A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9855BE728424AFC009F345A /* Chunck.swift in Sources */,
+				C9855BE528424AFC009F345A /* OpCode.swift in Sources */,
+				C9855BE628424AFC009F345A /* Value.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9855BCA28424AD1009F345A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9855BD428424AD1009F345A /* LoxCoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9855BD128424AD1009F345A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9855BC628424AD1009F345A /* LoxCore */;
+			targetProxy = C9855BD028424AD1009F345A /* PBXContainerItemProxy */;
+		};
+		C9855BE028424AD9009F345A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9855BC628424AD1009F345A /* LoxCore */;
+			targetProxy = C9855BDF28424AD9009F345A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C9855BBD28424AB3009F345A /* Debug */ = {
@@ -262,6 +458,101 @@
 			};
 			name = Release;
 		};
+		C9855BD728424AD1009F345A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = VA4EALFFD8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.imcc.LoxCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C9855BD828424AD1009F345A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = VA4EALFFD8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.imcc.LoxCore;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C9855BDA28424AD1009F345A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA4EALFFD8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.imcc.LoxCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C9855BDB28424AD1009F345A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA4EALFFD8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.imcc.LoxCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -279,6 +570,24 @@
 			buildConfigurations = (
 				C9855BC028424AB3009F345A /* Debug */,
 				C9855BC128424AB3009F345A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9855BD628424AD1009F345A /* Build configuration list for PBXNativeTarget "LoxCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9855BD728424AD1009F345A /* Debug */,
+				C9855BD828424AD1009F345A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9855BD928424AD1009F345A /* Build configuration list for PBXNativeTarget "LoxCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9855BDA28424AD1009F345A /* Debug */,
+				C9855BDB28424AD1009F345A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
