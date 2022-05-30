@@ -8,9 +8,8 @@
 import Foundation
 
 public struct Chunck {
-  var codes: [OpCode] = []
-  var lines: [Int] = []
-  var constants: [Value] = []
+  private(set) var codes: [OpCode] = []
+  private(set) var lines: [Int] = []
   
   public init() {}
   
@@ -18,19 +17,14 @@ public struct Chunck {
     codes.append(opcode)
     lines.append(line)
   }
-  
-  public mutating func add(constant: Value) {
-    constants.append(constant)
-  }
-  
 }
 
 extension Chunck: CustomStringConvertible {
   func disassemble(opcode: OpCode) -> String {
     switch opcode {
-      case .constant(let index):
+      case .constant(let value):
         return """
-               \(String(format: "%@ %4d", opcode.description.padding(toLength: 16, withPad: " ", startingAt: 0), index)) '\(self.constants[Int(index)].description)'
+               \(String(format: "%@     ", opcode.description.padding(toLength: 16, withPad: " ", startingAt: 0))) '\(value.description)'
                """
       default:
         return opcode.description

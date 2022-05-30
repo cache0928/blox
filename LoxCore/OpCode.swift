@@ -8,15 +8,25 @@
 import Foundation
 
 public enum OpCode {
-  case constant(index: UInt8)
+  case constant(_: Value)
+  case add
+  case subtract
+  case multiply
+  case divide
+  case negate
   case `return`
 }
 
 extension OpCode: CustomStringConvertible {
   public var description: String {
     switch self {
-      case .return: return "OP_RETURN"
       case .constant(_): return "OP_CONSTANT"
+      case .add: return "OP_ADD"
+      case .subtract: return "OP_SUBTRACT"
+      case .multiply: return "OP_MULTIPLY"
+      case .divide: return "OP_DIVIDE"
+      case .negate: return "OP_NEGATE"
+      case .return: return "OP_RETURN"
     }
   }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C9855BBC28424AB3009F345A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BBB28424AB3009F345A /* main.swift */; };
+		C9855BBC28424AB3009F345A /* blox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BBB28424AB3009F345A /* blox.swift */; };
 		C9855BCF28424AD1009F345A /* LoxCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9855BC728424AD1009F345A /* LoxCore.framework */; };
 		C9855BD428424AD1009F345A /* LoxCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BD328424AD1009F345A /* LoxCoreTests.swift */; };
 		C9855BD528424AD1009F345A /* LoxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C9855BC928424AD1009F345A /* LoxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -16,6 +16,9 @@
 		C9855BE528424AFC009F345A /* OpCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BE228424AFC009F345A /* OpCode.swift */; };
 		C9855BE628424AFC009F345A /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BE328424AFC009F345A /* Value.swift */; };
 		C9855BE728424AFC009F345A /* Chunck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BE428424AFC009F345A /* Chunck.swift */; };
+		C9B77A2E28445C5200E84544 /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B77A2D28445C5200E84544 /* VM.swift */; };
+		C9B77A3028449BBB00E84544 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B77A2F28449BBB00E84544 /* Error.swift */; };
+		C9B77A332844B1C500E84544 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = C9B77A322844B1C500E84544 /* ArgumentParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +63,7 @@
 
 /* Begin PBXFileReference section */
 		C9855BB828424AB3009F345A /* blox */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = blox; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9855BBB28424AB3009F345A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C9855BBB28424AB3009F345A /* blox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blox.swift; sourceTree = "<group>"; };
 		C9855BC728424AD1009F345A /* LoxCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoxCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9855BC928424AD1009F345A /* LoxCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoxCore.h; sourceTree = "<group>"; };
 		C9855BCE28424AD1009F345A /* LoxCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoxCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +71,8 @@
 		C9855BE228424AFC009F345A /* OpCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpCode.swift; sourceTree = "<group>"; };
 		C9855BE328424AFC009F345A /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		C9855BE428424AFC009F345A /* Chunck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chunck.swift; sourceTree = "<group>"; };
+		C9B77A2D28445C5200E84544 /* VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM.swift; sourceTree = "<group>"; };
+		C9B77A2F28449BBB00E84544 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9B77A332844B1C500E84544 /* ArgumentParser in Frameworks */,
 				C9855BDD28424AD9009F345A /* LoxCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,7 +127,7 @@
 		C9855BBA28424AB3009F345A /* blox */ = {
 			isa = PBXGroup;
 			children = (
-				C9855BBB28424AB3009F345A /* main.swift */,
+				C9855BBB28424AB3009F345A /* blox.swift */,
 			);
 			path = blox;
 			sourceTree = "<group>";
@@ -133,6 +139,8 @@
 				C9855BE228424AFC009F345A /* OpCode.swift */,
 				C9855BE328424AFC009F345A /* Value.swift */,
 				C9855BC928424AD1009F345A /* LoxCore.h */,
+				C9B77A2D28445C5200E84544 /* VM.swift */,
+				C9B77A2F28449BBB00E84544 /* Error.swift */,
 			);
 			path = LoxCore;
 			sourceTree = "<group>";
@@ -181,6 +189,9 @@
 				C9855BE028424AD9009F345A /* PBXTargetDependency */,
 			);
 			name = blox;
+			packageProductDependencies = (
+				C9B77A322844B1C500E84544 /* ArgumentParser */,
+			);
 			productName = blox;
 			productReference = C9855BB828424AB3009F345A /* blox */;
 			productType = "com.apple.product-type.tool";
@@ -252,6 +263,9 @@
 				Base,
 			);
 			mainGroup = C9855BAF28424AB3009F345A;
+			packageReferences = (
+				C9B77A312844B1C500E84544 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = C9855BB928424AB3009F345A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -285,7 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9855BBC28424AB3009F345A /* main.swift in Sources */,
+				C9855BBC28424AB3009F345A /* blox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +309,8 @@
 			files = (
 				C9855BE728424AFC009F345A /* Chunck.swift in Sources */,
 				C9855BE528424AFC009F345A /* OpCode.swift in Sources */,
+				C9B77A2E28445C5200E84544 /* VM.swift in Sources */,
+				C9B77A3028449BBB00E84544 /* Error.swift in Sources */,
 				C9855BE628424AFC009F345A /* Value.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +501,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TRACE_EXECUTION = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -516,6 +533,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TRACE_EXECUTION = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -593,6 +611,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C9B77A312844B1C500E84544 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C9B77A322844B1C500E84544 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C9B77A312844B1C500E84544 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C9855BB028424AB3009F345A /* Project object */;
 }
