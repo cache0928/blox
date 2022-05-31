@@ -14,10 +14,8 @@ public struct VM {
   
   public init() {}
   
-  public mutating func interpret(chunck: Chunck) throws {
-    self.chunck = chunck
-    self.pc = 0
-    try run()
+  public mutating func interpret(source: String) throws {
+    Compiler().compile(source: source)
   }
   
   private mutating func run() throws {

@@ -53,9 +53,15 @@ struct BLox: ParsableCommand {
   
   private func run(source: String) throws {
     do {
-      
+      var vm = VM()
+      try vm.interpret(source: source)
+      print(TokenType.IDENTIFIER.rawValue)
     } catch {
-      
+      guard case .runtimeError = error as? LoxError else {
+        throw error
+      }
+      print(error)
+      BLox.exit(withError: ExitCode(70))
     }
   }
 }

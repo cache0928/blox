@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C9855BBC28424AB3009F345A /* blox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BBB28424AB3009F345A /* blox.swift */; };
 		C9855BCF28424AD1009F345A /* LoxCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9855BC728424AD1009F345A /* LoxCore.framework */; };
-		C9855BD428424AD1009F345A /* LoxCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BD328424AD1009F345A /* LoxCoreTests.swift */; };
+		C9855BD428424AD1009F345A /* ScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9855BD328424AD1009F345A /* ScannerTests.swift */; };
 		C9855BD528424AD1009F345A /* LoxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = C9855BC928424AD1009F345A /* LoxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9855BDD28424AD9009F345A /* LoxCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9855BC728424AD1009F345A /* LoxCore.framework */; };
 		C9855BDE28424AD9009F345A /* LoxCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9855BC728424AD1009F345A /* LoxCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -19,6 +19,10 @@
 		C9B77A2E28445C5200E84544 /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B77A2D28445C5200E84544 /* VM.swift */; };
 		C9B77A3028449BBB00E84544 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B77A2F28449BBB00E84544 /* Error.swift */; };
 		C9B77A332844B1C500E84544 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = C9B77A322844B1C500E84544 /* ArgumentParser */; };
+		C9B77A352844B5B900E84544 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B77A342844B5B900E84544 /* Scanner.swift */; };
+		C9B77A372844B73B00E84544 /* Compiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B77A362844B73B00E84544 /* Compiler.swift */; };
+		C9B77A3A2844BF6C00E84544 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B77A392844BF6C00E84544 /* Token.swift */; };
+		C9B77A3D2844C39900E84544 /* Character+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B77A3C2844C39900E84544 /* Character+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,12 +71,16 @@
 		C9855BC728424AD1009F345A /* LoxCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoxCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9855BC928424AD1009F345A /* LoxCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoxCore.h; sourceTree = "<group>"; };
 		C9855BCE28424AD1009F345A /* LoxCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoxCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9855BD328424AD1009F345A /* LoxCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoxCoreTests.swift; sourceTree = "<group>"; };
+		C9855BD328424AD1009F345A /* ScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerTests.swift; sourceTree = "<group>"; };
 		C9855BE228424AFC009F345A /* OpCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpCode.swift; sourceTree = "<group>"; };
 		C9855BE328424AFC009F345A /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		C9855BE428424AFC009F345A /* Chunck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chunck.swift; sourceTree = "<group>"; };
 		C9B77A2D28445C5200E84544 /* VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM.swift; sourceTree = "<group>"; };
 		C9B77A2F28449BBB00E84544 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		C9B77A342844B5B900E84544 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		C9B77A362844B73B00E84544 /* Compiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compiler.swift; sourceTree = "<group>"; };
+		C9B77A392844BF6C00E84544 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		C9B77A3C2844C39900E84544 /* Character+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,12 +143,15 @@
 		C9855BC828424AD1009F345A /* LoxCore */ = {
 			isa = PBXGroup;
 			children = (
+				C9B77A3B2844C38B00E84544 /* Utils */,
+				C9B77A382844BF5800E84544 /* AST */,
 				C9855BE428424AFC009F345A /* Chunck.swift */,
 				C9855BE228424AFC009F345A /* OpCode.swift */,
 				C9855BE328424AFC009F345A /* Value.swift */,
 				C9855BC928424AD1009F345A /* LoxCore.h */,
 				C9B77A2D28445C5200E84544 /* VM.swift */,
 				C9B77A2F28449BBB00E84544 /* Error.swift */,
+				C9B77A362844B73B00E84544 /* Compiler.swift */,
 			);
 			path = LoxCore;
 			sourceTree = "<group>";
@@ -148,7 +159,7 @@
 		C9855BD228424AD1009F345A /* LoxCoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				C9855BD328424AD1009F345A /* LoxCoreTests.swift */,
+				C9855BD328424AD1009F345A /* ScannerTests.swift */,
 			);
 			path = LoxCoreTests;
 			sourceTree = "<group>";
@@ -158,6 +169,23 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9B77A382844BF5800E84544 /* AST */ = {
+			isa = PBXGroup;
+			children = (
+				C9B77A342844B5B900E84544 /* Scanner.swift */,
+				C9B77A392844BF6C00E84544 /* Token.swift */,
+			);
+			path = AST;
+			sourceTree = "<group>";
+		};
+		C9B77A3B2844C38B00E84544 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C9B77A3C2844C39900E84544 /* Character+.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,9 +337,13 @@
 			files = (
 				C9855BE728424AFC009F345A /* Chunck.swift in Sources */,
 				C9855BE528424AFC009F345A /* OpCode.swift in Sources */,
+				C9B77A372844B73B00E84544 /* Compiler.swift in Sources */,
 				C9B77A2E28445C5200E84544 /* VM.swift in Sources */,
 				C9B77A3028449BBB00E84544 /* Error.swift in Sources */,
+				C9B77A352844B5B900E84544 /* Scanner.swift in Sources */,
 				C9855BE628424AFC009F345A /* Value.swift in Sources */,
+				C9B77A3D2844C39900E84544 /* Character+.swift in Sources */,
+				C9B77A3A2844BF6C00E84544 /* Token.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,7 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9855BD428424AD1009F345A /* LoxCoreTests.swift in Sources */,
+				C9855BD428424AD1009F345A /* ScannerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
