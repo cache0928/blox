@@ -11,12 +11,7 @@ import XCTest
 class ScannerTests: XCTestCase {
   func getScanResult(source: String) throws -> [Token] {
     let scanner = Scanner(source: source)
-    return try scanner.map {
-      switch $0 {
-        case .success(let token): return token
-        case .failure(let error): throw error
-      }
-    }
+    return try scanner.scanTokens()
   }
   
   func testSingleCharTokenType() throws {
@@ -42,14 +37,14 @@ class ScannerTests: XCTestCase {
   
   func testDiscardComents() throws  {
     let result1 = try getScanResult(source: "//comments\n")
-    XCTAssertTrue(result1.isEmpty)
+    XCTAssertTrue(result1.last?.type == .EOF)
     let result2 = try getScanResult(source: "//comments")
-    XCTAssertTrue(result2.isEmpty)
+    XCTAssertTrue(result2.last?.type == .EOF)
   }
   
   func testIgnoreWhitespace() throws  {
     let result = try getScanResult(source: " \r\t")
-    XCTAssertTrue(result.isEmpty)
+    XCTAssertTrue(result.last?.type == .EOF)
   }
   
   func testLineisIncreased() throws  {
@@ -71,19 +66,19 @@ class ScannerTests: XCTestCase {
     let result1 = try getScanResult(source: "1234.56")
     XCTAssertEqual(result1.first?.type, .NUMBER)
     XCTAssertEqual(Double(result1.first?.lexeme ?? ""), 1234.56)
-    let result2 = try getScanResult(source: "1000")
-    XCTAssertEqual(result2.first?.type, .NUMBER)
-    XCTAssertEqual(Double(result2.first?.lexeme ?? ""), 1000)
+    let result2 = try getScanResult(source: "\"1000\"")
+    XCTAssertEqual(result2.first?.type, .STRING)
+    XCTAssertEqual(result2.first?.lexeme, "1000")
   }
   
   func testScanIndentifiers() throws  {
     let result = try getScanResult(source: "var tmp = 1000")
-    XCTAssertEqual(result.map{$0.type}, [.VAR, .IDENTIFIER, .EQUAL, .NUMBER])
+    XCTAssertEqual(result.map{$0.type}, [.VAR, .IDENTIFIER, .EQUAL, .NUMBER, .EOF])
   }
   
   func testCStyleComments() throws  {
     let result = try getScanResult(source: "/*\n***some comments***\n*/")
-    XCTAssertTrue(result.isEmpty)
+    XCTAssertTrue(result.last?.type == .EOF)
     XCTAssertThrowsError(try getScanResult(source: "/*\nsome comments\n*"))
   }
   

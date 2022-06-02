@@ -55,7 +55,6 @@ struct BLox: ParsableCommand {
     do {
       var vm = VM()
       try vm.interpret(source: source)
-      print(TokenType.IDENTIFIER.rawValue)
     } catch {
       guard case .runtimeError = error as? LoxError else {
         throw error

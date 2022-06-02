@@ -15,11 +15,12 @@ public struct VM {
   public init() {}
   
   public mutating func interpret(source: String) throws {
-    Compiler().compile(source: source)
+    chunck = try Compiler().compile(source: source)
+    pc = 0
+    try run()
   }
   
   private mutating func run() throws {
-    
     func readCode() -> OpCode? {
       guard pc < chunck.codes.count else {
         return nil
@@ -29,23 +30,22 @@ public struct VM {
       }
       return chunck.codes[pc]
     }
-    
     while let instruction = readCode() {
       #if DEBUG
       print("          \(stack.map { "[ \($0) ]"}.joined())")
       print(chunck.disassemble(opcode: instruction))
       #endif
       switch instruction {
-        case .constant(let value):
+        case .constant(let value, _):
           stack.append(value)
-        case .add:
+        case .add(_):
           switch (stack.popLast(), stack.popLast()) {
             case (.double(let b), .double(let a)):
               stack.append(.double(a + b))
             default:
               throw LoxError.runtimeError(message: "Operand must be two numbers.")
           }
-        case .subtract, .multiply, .divide:
+        case .subtract(_), .multiply(_), .divide(_):
           switch (stack.popLast(), stack.popLast()) {
             case (.double(let b), .double(let a)):
               if case .subtract = instruction {
@@ -58,7 +58,7 @@ public struct VM {
             default:
               throw LoxError.runtimeError(message: "Operand must be two numbers.")
           }
-        case .negate:
+        case .negate(_):
           guard case let .double(value) = stack.popLast() else {
             throw LoxError.runtimeError(message: "Operand must be a number.")
           }

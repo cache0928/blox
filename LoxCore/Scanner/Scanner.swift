@@ -7,81 +7,68 @@
 
 import Foundation
 
-struct Scanner: Sequence {
-  let source: String
-  
-  func makeIterator() -> TokenIterator {
-    return TokenIterator(source: source)
-  }
-}
-
-struct TokenIterator: IteratorProtocol {
-  let source: String
+final class Scanner {
+  private let source: String
+  private var tokens: [Token] = []
   private var tokenStartIndex: String.Index
   private var currentScanIndex: String.Index
   private var line = 1
   
-  init(source: String) {
+  public init(source: String) {
     self.source = source
     tokenStartIndex =  source.startIndex
     currentScanIndex = source.startIndex
   }
   
-  mutating func next() -> Result<Token, Error>? {
-    do {
-      guard let token = try scanToken() else {
-        return nil
-      }
-      return .success(token)
-    } catch {
-      return .failure(error)
-    }
+  public func scanTokens() throws -> [Token]  {
+    repeat {
+      tokenStartIndex = currentScanIndex
+      try scanToken()
+    } while !isAtEnd
+    tokens.append(Token(type: .EOF, line: line, lexeme: ""))
+    return tokens
   }
   
-  private mutating func scanToken() throws -> Token? {
-    tokenStartIndex = currentScanIndex
+  private func scanToken() throws {
     guard let c = advanceIndex() else {
       // 到达文件末尾
-      return nil
+      return
     }
     switch c {
-      case "(",")","{","}",",",".","-","+",";","*", ":": return makeToken(type: TokenType(rawValue: String(c))!)
-      case "!": return makeToken(type: match(expected: "=") ? TokenType(rawValue: "!=")! : TokenType(rawValue: "!")!)
-      case "=": return makeToken(type: match(expected: "=") ? TokenType(rawValue: "==")! : TokenType(rawValue: "=")!)
-      case "<": return makeToken(type: match(expected: "=") ? TokenType(rawValue: "<=")! : TokenType(rawValue: "<")!)
-      case ">": return makeToken(type: match(expected: "=") ? TokenType(rawValue: ">=")! : TokenType(rawValue: ">")!)
+      case "(",")","{","}",",",".","-","+",";","*", ":": addToken(type: TokenType(rawValue: String(c))!)
+      case "!": addToken(type: match(expected: "=") ? TokenType(rawValue: "!=")! : TokenType(rawValue: "!")!)
+      case "=": addToken(type: match(expected: "=") ? TokenType(rawValue: "==")! : TokenType(rawValue: "=")!)
+      case "<": addToken(type: match(expected: "=") ? TokenType(rawValue: "<=")! : TokenType(rawValue: "<")!)
+      case ">": addToken(type: match(expected: "=") ? TokenType(rawValue: ">=")! : TokenType(rawValue: ">")!)
       case "/":
         if (match(expected: "/")) {
           // 是注释的话直接消耗整行
           while currentCharacter != "\n" && !isAtEnd {
             advanceIndex()
           }
-          return try scanToken()
         } else if (match(expected: "*")) {
           try scanCStyleComments()
-          return try scanToken()
         } else {
-          return makeToken(type: TokenType(rawValue: "/")!)
+          addToken(type: TokenType(rawValue: "/")!)
         }
-      case "\"": return try scanString()
+      case "\"": try scanString()
       default:
         if c.isNewline {
           line += 1
-          return try scanToken()
         } else if c.isWhitespace {
           // 忽略空白
-          return try scanToken()
+          break
         } else if c.isDigit {
-          return scanNumber()
+          scanNumber()
         } else if c.isAlpha {
-          return scanIdentifier()
+          scanIdentifier()
         } else {
-          throw LoxError.scanError(message: "Unexpected character", line: line)
+          throw LoxError.scanError(message: "Unexpected character.", line: line)
         }
     }
   }
   
-  private mutating func match(expected: Character) -> Bool {
+  private func match(expected: Character) -> Bool {
     guard !isAtEnd else {
       return false
     }
@@ -93,7 +80,7 @@ struct TokenIterator: IteratorProtocol {
   }
   
   @discardableResult
-  private mutating func advanceIndex() -> Character? {
+  private func advanceIndex() -> Character? {
     guard !isAtEnd else {
       return nil
     }
@@ -102,7 +89,7 @@ struct TokenIterator: IteratorProtocol {
     return c
   }
   
-  private mutating func scanString() throws -> Token {
+  private func scanString() throws {
     while currentCharacter != "\"" && !isAtEnd {
       if currentCharacter == "\n" {
         line += 1
@@ -111,17 +98,16 @@ struct TokenIterator: IteratorProtocol {
     }
     // 扫描到底都没发现下一个引号
     guard !isAtEnd else {
-      throw LoxError.scanError(message: "Unterminated string", line: line)
+      throw LoxError.scanError(message: "Unterminated string.", line: line)
     }
-    // 此操作前tokenStartIndex此时指向开始的引号，currentScanIndex指向闭合引号
+    // tokenStartIndex此时指向开始的引号，currentScanIndex指向闭合引号
     tokenStartIndex = source.index(after: tokenStartIndex)
-    let token = makeToken(type: .STRING)
+    addToken(type: .STRING)
     // 取出字面量后将指针移动至闭合引号的下一个字符
     advanceIndex()
-    return token
   }
   
-  private mutating func scanNumber() -> Token {
+  private func scanNumber() {
     while currentCharacter?.isDigit == true {
       advanceIndex()
     }
@@ -133,19 +119,19 @@ struct TokenIterator: IteratorProtocol {
         advanceIndex()
       }
     }
-    return makeToken(type: .NUMBER)
+    addToken(type: .NUMBER)
   }
   
-  private mutating func scanIdentifier() -> Token {
+  private func scanIdentifier() {
     while currentCharacter?.isAlphaNumberic == true {
       advanceIndex()
     }
     let str = String(source[tokenStartIndex ..< currentScanIndex])
     let tokenType = TokenType(rawValue: str) ?? .IDENTIFIER
-    return makeToken(type: tokenType)
+    addToken(type: tokenType)
   }
   
-  private mutating func scanCStyleComments() throws {
+  private func scanCStyleComments() throws {
     while currentCharacter != "*" && !isAtEnd {
       if currentCharacter == "\n" {
         line += 1
@@ -153,7 +139,7 @@ struct TokenIterator: IteratorProtocol {
       advanceIndex()
     }
     guard !isAtEnd else {
-      throw LoxError.scanError(message: "Unterminated comment", line: line)
+      throw LoxError.scanError(message: "Unterminated commment.", line: line)
     }
     advanceIndex()
     if match(expected: "/") {
@@ -163,9 +149,9 @@ struct TokenIterator: IteratorProtocol {
     }
   }
   
-  private mutating func makeToken(type: TokenType) -> Token {
+  private func addToken(type: TokenType) {
     let text = source[tokenStartIndex ..< currentScanIndex]
-    return Token(type: type, line: line, lexeme: String(text))
+    tokens.append(Token(type: type, line: line, lexeme: String(text)))
   }
   
   private var isAtEnd:  Bool  {

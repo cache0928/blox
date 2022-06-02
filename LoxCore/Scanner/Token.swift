@@ -24,10 +24,12 @@ public enum TokenType: String {
   // Keywords.
   AND = "and", CLASS = "class", ELSE = "else", FALSE = "false", FUN = "fun",
   FOR = "for", IF = "if", NIL = "nil", OR = "or",
-  PRINT = "print", RETURN = "return", SUPER = "super", THIS = "this", TRUE = "true", VAR = "var", WHILE = "while"
+  PRINT = "print", RETURN = "return", SUPER = "super", THIS = "this", TRUE = "true", VAR = "var", WHILE = "while",
+  
+  EOF
 }
 
-struct Token {
+public struct Token {
   let type: TokenType
   let line: Int
   let lexeme: String

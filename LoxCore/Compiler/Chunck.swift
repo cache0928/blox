@@ -9,20 +9,18 @@ import Foundation
 
 public struct Chunck {
   private(set) var codes: [OpCode] = []
-  private(set) var lines: [Int] = []
   
   public init() {}
   
-  public mutating func write(opcode: OpCode, line: Int) {
+  public mutating func write(opcode: OpCode) {
     codes.append(opcode)
-    lines.append(line)
   }
 }
 
 extension Chunck: CustomStringConvertible {
   func disassemble(opcode: OpCode) -> String {
     switch opcode {
-      case .constant(let value):
+      case .constant(let value, _):
         return """
                \(String(format: "%@     ", opcode.description.padding(toLength: 16, withPad: " ", startingAt: 0))) '\(value.description)'
                """
@@ -32,10 +30,10 @@ extension Chunck: CustomStringConvertible {
   }
   public var description: String {
     func line(index: Int) -> String {
-      if index > 0 && lines[index] == lines[index - 1] {
+      if index > 0 && codes[index].line == codes[index - 1].line {
         return "   |"
       } else {
-        return String(format: "%4d", lines[index])
+        return String(format: "%4d", codes[index].line)
       }
     }
     return codes.enumerated().map {
